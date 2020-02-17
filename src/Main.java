@@ -14,9 +14,13 @@ public class Main {
         if (inputString.equals("Y") || inputString.equals("y")) {
             //The below option reads user input for jagged array and provide results
             readUserInput(scanner);
-        } else if (inputString.equals("N") || inputString.equals("n")){
-            // Reading Input from a hard coded file please change file Name. Input files can be chosen from sample available
-            readInputFile("/Users/shuklag/IdeaProjects/ImpactAnalytics/src/valid1.csv", scanner);
+        } else if (inputString.equals("N") || inputString.equals("n")) {
+            // Reading Input from a hard coded file please change file Name.
+            // Input files can be chosen from sample available
+            System.out.println("Enter file path.");
+            String filePath = scanner.next();
+            //Sample : "/Users/shuklag/IdeaProjects/GoldTreasure/src/valid1.csv"
+            readInputFile(filePath, scanner);
         } else {
             System.out.println("Wrong input provided");
             return;
@@ -28,6 +32,10 @@ public class Main {
             System.out.println("Enter number of rows present in File.");
             // The above statement in written for convenience, Could be read from file only.
             int numOfRows = scanner.nextInt();
+            if (numOfRows <= 0) {
+                System.out.println("Invalid Input");
+                return;
+            }
             int[][] input = new int[numOfRows][];
 
             File file = new File(csvFile);
@@ -60,6 +68,10 @@ public class Main {
     static void readUserInput(Scanner scanner) {
         System.out.println("Enter number of rows for the Jagged array.");
         int numOfRows = scanner.nextInt();
+        if (numOfRows <= 0) {
+            System.out.println("Invalid Input");
+            return;
+        }
         int[][] input = new int[numOfRows][];
 
         int maxColumn = -1;

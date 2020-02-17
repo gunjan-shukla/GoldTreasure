@@ -1,5 +1,8 @@
 Steps :
 
+Series : Consecutive presence of 1's i.e. gold treasure.
+Coordinate : Row and Column of any element in the array.
+
 1) Code asks if user want to enter the values OR read them from a file.
 2) Enter Y if you want to enter the values.
 3) Otherwise change the file location as per your directory structure. Sample files are provided.

@@ -30,3 +30,4 @@ public class Coordinate {
         return (this.row == current.row) && (this.column == current.column);
     }
 }
+
