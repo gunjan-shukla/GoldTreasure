@@ -1,0 +1,16 @@
+Approach 1 :
+
+1) Fetch jar file from artifacts folder.
+2) Enter Y if input the array.
+3) Enter N to provide file path.
+4) Enter Number of rows / Total number of Lines as an Integer.
+5) Enter array at every row in case of user input.
+
+
+Approach 2 :
+
+1) Open code in IDE
+2) Run Main file
+3) Follow the steps from Approach 1
+
+
