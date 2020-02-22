@@ -30,7 +30,8 @@ store series length as output needs to be sorted in increasing order of series l
 
 Sorting countResult will help creating the desired output.
 
-Improvement : In place of hashmap module simple json object could be used as json object properties are also unique.
-
+Improvement : 
+1) In place of hashmap module simple json object could be used as json object properties are also unique.
+2) Insertion of -1 to make jagged a normal 2D array can be avoided.
 
 
