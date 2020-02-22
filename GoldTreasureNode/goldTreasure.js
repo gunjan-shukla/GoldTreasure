@@ -2,7 +2,7 @@ const path = require('path');
 const prompt = require('prompt-sync')();
 const HashMap = require('hashmap');
 const fs = require('fs');
-const csv = require('csv');
+const csv = require('csv'); // FYI : Specific version of this node module is used.
 const obj = csv();
 
 const goldTreasure = {
@@ -65,10 +65,9 @@ const goldTreasure = {
         }
     },
     // This below method reads the input array and using dynamic programming create another array.
-
     getGoldTreasure: function getGoldTreasure(input, maxColumn) {
         // Result set to store the coordinates the array which will participate in the result.
-        // Key if the hash map is starting index of any series. This is actually coordinate of 1.
+        // Key of the hash map is starting index of any series. Format is : "row*column"
         var resultSet = new HashMap();
 
         // Initializing the zeroth coordinates because all the calculations will happen leaving that coordinate.
@@ -81,6 +80,7 @@ const goldTreasure = {
 
         for (let index = 0; index < arr.length; index++) {
             arr[index] = new Array();
+            //Initializing the intemediate array with -1 which will be considered as invalid input later.
             for (let j = 0; j < maxColumn; j++) {
                 arr[index].push(-1);
             }
@@ -88,7 +88,8 @@ const goldTreasure = {
 
         for (let i = 0; i < input.length; i++) {
             for (let j = 0; j < input[i].length; j++) {
-                // If any input is invalid i.e a single coordinate that can participate in multiple series OR any other input from 0  or 1
+                // If any input is invalid i.e a single coordinate that can participate in 
+                //multiple series OR any other input from 0  or 1
                 if (!goldTreasure.checkCorrectInput(input, i, j)) {
                     console.log("INVALID Input");
                     process.exit(1);
@@ -123,14 +124,19 @@ const goldTreasure = {
     // The below method will check if the element is present as the array is jagged or can have invalid numbers
     checkIfRecordExists: function checkIfRecordExists(row, column, input) {
         let bRet = true;
+        //if Row and Column are negative.
         if (row < 0 || column < 0)
             bRet = false;
+        //if Input is not defined.
         else if (!input)
             bRet = false;
+        //if row is not present in the input
         else if (input && row >= input.length)
             bRet = false;
+        // if Row is present but the column is not
         else if (input && input[row] && row < input.length && column >= input[row].length)
             bRet = false;
+        // if row and columns are present but value is invalid which is -1
         else if (input && input[row] && row < input.length && column < input[row].length && input[row][column] && input[row][column] == -1)
             bRet = false;
         else
